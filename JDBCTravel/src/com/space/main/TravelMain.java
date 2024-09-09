@@ -1,7 +1,6 @@
 package com.space.main;
 
-import com.space.global.AppFuncs;
-import com.space.global.AppUI;
+import com.space.global.*;
 
 public class TravelMain {
 	

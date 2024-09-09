@@ -18,117 +18,79 @@ public class AppUI {
 	//UIs
 	// 0. 시작화면 출력(Main)
 	public static void startScreen() {
-		System.out.println("\n========== 열차 예매 관리 시스템 ==========");
-		System.out.println("### 1. 현재열차정보 ");
-		System.out.println("### 2. 예매되어있는 좌석정보확인");
-		System.out.println("### 3. 예매한 좌석 확인 및 좌석 예매");		
-		System.out.println("### 4. 예매된 좌석취소 ");		
-		System.out.println("### 7. 예매 프로그램 건의사항 작성");		 
+		System.out.println("\n========== 여행 및 패키지 관리 시스템 ==========");
+		System.out.println("### 1. 여행패키지 추가");
+		System.out.println("### 2. 여행패키지 조회");
+		System.out.println("### 3. 여행패키지 수정");
+		System.out.println("### 4. 여행패키지 삭제");
+		System.out.println("### 7. 여행패키지 기록");
 		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
 	}
 	
-	// 1. 현재운행정보 화면 출력
-	public static void TrainSituationScreen() {
-		System.out.println("\n========== 현재열차운행정보 ==========");
-		System.out.println("### 1000. 모든 열차의 정보");
-		System.out.println("### 2. 새마을호"); 
-		System.out.println("### 4. 무궁화호");	  
-		System.out.println("### 6. ITX"); 
-		System.out.println("### 8. KTX");
+	// 1. 여행패키지 추가
+	public static void TravelInsertScreen() {
+		System.out.println("\n========== 여행패키지 추가 ==========");
+		System.out.println("### 11. 여행패키지 추가");
+		System.out.println("### 12. 여행지 추가");
+		System.out.println("### 13. 숙박시설 추가");
+		System.out.println("### 14. 음식 추가");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
 		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>"); 
 	}
 	
-	// 2. 현재좌석예약정보 화면 출력
-	public static void TrainSeatsSituationScreen() {
-		System.out.println("\n========== 예매된 좌석정보 ==========");
-		System.out.println("### 1000. 모든 열차의 예매정보");
-		System.out.println("### 2. 새마을호"); 
-		System.out.println("### 4. 무궁화호");
-		System.out.println("### 6. ITX"); 
-		System.out.println("### 8. KTX");
+	// 2. 여행패키지 조회
+	public static void TravelSearchScreen() {
+		System.out.println("\n========== 여행패키지 조회 ==========");
+		System.out.println("### 20. 예약 조회");
+		System.out.println("### 21. 여행패키지 조회");
+		System.out.println("### 22. 여행지 조회");
+		System.out.println("### 23. 숙박시설 조회");
+		System.out.println("### 24. 음식 조회");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
 		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>"); 
 	}
 	
-	// 3. 좌석확인&좌석예매하기 
-	public static void TrainSeatsChkNRsvScreen() {
-		System.out.println("\n========= 좌석확인&예매하기 =========");
-		System.out.println("### 1. 좌석 확인하기");
-		System.out.println("### 2. 좌석 예매하기"); 
+	// 3. 여행패키지 수정
+	public static void TravelUpdateScreen() {
+		System.out.println("\n========== 여행패키지 수정 ==========");
+		System.out.println("### 31. 여행패키지 수정");
+		System.out.println("### 32. 여행지 수정");
+		System.out.println("### 33. 숙박시설 수정");
+		System.out.println("### 34. 음식 수정");
+		System.out.println("### 9. 메인 페이지로 돌아가기");
+		TerminateProgramMessages();
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+	
+	// 4. 여행패키지 취소
+	public static void TravelDeleteScreen() {
+		System.out.println("\n========== 여행패키지 수정 ==========");
+		System.out.println("### 40. 예약 삭제");
+		System.out.println("### 41. 여행패키지 삭제");
+		System.out.println("### 42. 여행지 삭제");
+		System.out.println("### 43. 숙박시설 삭제");
+		System.out.println("### 44. 음식 삭제");
+		System.out.println("### 9. 메인 페이지로 돌아가기");
+		TerminateProgramMessages();
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+	
+	// 7. 여행패키지 기록
+	public static void TravelHistoryScreen() {
+		System.out.println("\n========= 여행패키지 기록 =========");
+		System.out.println("### 71. 여행패키지기록 조회");
+		System.out.println("### 72. 여행패키지기록 삭제");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
 		TerminateProgramMessages();
 		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
+		System.out.print(">>> ");
 	}
-	
-	// 3-1. 예매한 좌석 확인하기 
-	public static void SeatsCheckScreen() {
-		System.out.println("\n========= 좌석 확인하기 =========");
-		System.out.println("### 1. ID로 예매좌석로 확인하기");
-		System.out.println("### 2. 이름으로 예매좌석 확인하기");
-		System.out.println("### 9. 좌석확인&예매하기 페이지로 돌아가기");
-		TerminateProgramMessages();
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-
-	// 3-2. 좌석 예매하기 
-	public static void SeatsReservationScreen() {
-		System.out.println("\n========= 좌석 예매하기 =========");
-		System.out.println("### 1. 열차좌석 예약하기");
-		System.out.println("### 9. 좌석확인&예매하기 페이지로 돌아가기");
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-			
-	// 4. 좌석 취소하기
-	public static void SeatsCancelationScreen() {
-		System.out.println("### 1. 예매 취소하기");
-		System.out.println("### 9. 메인 페이지로 돌아가기");
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-		
-	// 7. 건의사항
-	public static void SuggestionScreen() {
-		System.out.println("\n========= 예매 프로그램 건의사항 조회&작성 =========");
-		System.out.println("### 1. 건의사항 조회하기");
-		System.out.println("### 2. 건의사항 작성하기");
-		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-	
-	// 7-1.건의사항 조회
-	public static void SearchingSuggestionScreen() {
-		System.out.println("\n========= 건의사항 조회하기 =========");
-		System.out.println("### 1. 전체 조회하기");
-		System.out.println("### 2. ID로 조회하기");
-		System.out.println("### 3. 건의게시판 번호로 조회하기");
-		System.out.println("### 9. 건의사항 페이지로 돌아가기");
-		TerminateProgramMessages();
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-	
-	// 240805. 관리자모드
-	public static void ManagementScreen() {
-		System.out.println("\n========= 예매 프로그램 관리자 모드 =========");
-		System.out.println("### 1. 열차정보 추가하기");
-		System.out.println("### 2. 열차정보 수정하기");
-		System.out.println("### 3. 열차정보 삭제하기");
-		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
-		System.out.println("----------------------------------------");
-		System.out.print(">>> "); 
-	}
-	
 }

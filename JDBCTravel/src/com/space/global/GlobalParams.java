@@ -2,41 +2,45 @@ package com.space.global;
 
 public interface GlobalParams {
 
-	//Main Menu
-	int infoNum = 1; 		      //현재 열차의 운행정보
-	int situationNum = 2;		  //예매되어있는 좌석정보확인
-	int chkNRsvNum = 3; 		  //예매한 좌석 확인 및 좌석 예매
-	int cancelNum = 4;		      //예매좌석 취소
-	int suggestNum = 7;		      //고객제안	
-	int returnNum = 9;            //상위 메뉴로 돌아가기
-	
-	//Search 
-	int searchAll = 1000;       //전체검색
-	int saemaeulCode = 2;       //새마을호
-	int mugunghwaCode = 4;     	//무궁화호
-	int itxCode = 6;           	//ITX
-	int ktxCode = 8;           	//KTX
-	
-	//예약넘버
-	int reserveNum = 2;
-	
-	//좌석예약
-	int findById = 1;
-	int findByName = 2;
-	int rsvId = 1;
-	int rsvName =2;
-	
-	//좌석취소
-	//int cancelNum =1;
-	
-	//열차 좌석수
-	int seats8 = 8;
-	int seats10 = 10;
-	
-	//메인 화면으로 돌아가기
-	int returnMainNum = 999;
-	
-	//terminate Program
-	int terminateNum = 99999; 
+	//시작화면 출력(Main)
+	int travelInsertNo = 1; 		//여행 및 패키지 추가 - 성진
+	int travelSearchNo = 2;		  	//여행 및 패키지 조회 - 용준
+	int travelUpdateNo = 3; 		//여행 및 패키지 수정 - 재연
+	int travelDeleteNo = 4;		    //여행 및 패키지 삭제 - 영훈
+	int travelHistoryNo = 7;		//여행 및 패키지 기록
 
+	int returnNum = 9;            	//상위 메뉴로 돌아가기
+
+	// 1. 여행패키지 추가
+	int insertTravelPackage = 11; 	//여행패키지 추가
+	int insertTravelPalce = 12; 	//여행지 추가
+	int insertTravelLodging = 13;	//숙박시설 추가
+	int insertTravelFood = 14;		//음식 추가
+
+	// 2. 여행패키지 조회
+	int searchRsv = 20;       		//예약 조회
+	int searchTravelPackage = 21;  	//여행패키지 조회
+	int searchTravelPlace = 22;     //여행지 조회
+	int searchTravelLodging = 23;   //숙박시설 조회
+	int searchTravelFood = 24;      //음식 조회
+
+	// 3. 여행패키지 수정
+	int updateTravelPackage = 31;   //여행패키지 수정
+	int updateTravelPlace = 32;   	//여행지 수정
+	int updateTravelLodging = 33; 	//숙박시설 수정
+	int updateTravelFood = 34;    	//음식 수정
+
+	// 4. 여행패키지 삭제
+	int deleteReservation = 40;   	//여행패키지 추가
+	int deleteTravelPackage = 41;   //여행패키지 조회
+	int deleteTravelPlace = 42;   	//여행지 조회
+	int deleteTravelLodging = 43; 	//숙박시설 조회
+	int deleteTravelFood = 44;    	//음식 조회
+
+	// 7. 여행패키지 기록
+	int searchTravelHistory = 71;   //여행패키지 기록 조회
+	int deleteTravelHistory = 72;  	//여행패키지기록 삭제
+
+	//terminate Program(프로그램 종료)
+	int terminateNum = 99999;
 }
