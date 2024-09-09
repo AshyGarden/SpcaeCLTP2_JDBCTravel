@@ -3,72 +3,72 @@ package com.space.travel;
 import java.sql.Date;
 
 public class TravelPackage {
-    private int package_number;
-    private String package_name;
-    private int package_price;
-    private Date package_departure;
-    private Date package_arrival;
+    private int packageNumber;
+    private String packageName;
+    private int packagePrice;
+    private Date packageDeparture;
+    private Date packageArrival;
 
 
     public TravelPackage() {
     }
 
-    public TravelPackage(int package_number, String package_name, int package_price, Date package_departure, Date package_arrival) {
-        this.package_number = package_number;
-        this.package_name = package_name;
-        this.package_price = package_price;
-        this.package_departure = package_departure;
-        this.package_arrival = package_arrival;
+    public TravelPackage(int packageNumber, String packageName, int packagePrice, Date packageDeparture, Date packageArrival) {
+        this.packageNumber = packageNumber;
+        this.packageName = packageName;
+        this.packagePrice = packagePrice;
+        this.packageDeparture = packageDeparture;
+        this.packageArrival = packageArrival;
     }
 
-    public int getPackage_number() {
-        return package_number;
+    public int getPackageNumber() {
+        return packageNumber;
     }
 
-    public void setPackage_number(int package_number) {
-        this.package_number = package_number;
+    public void setPackageNumber(int packageNumber) {
+        this.packageNumber = packageNumber;
     }
 
-    public String getPackage_name() {
-        return package_name;
+    public String getPackageName() {
+        return packageName;
     }
 
-    public void setPackage_name(String package_name) {
-        this.package_name = package_name;
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
     }
 
-    public int getPackage_price() {
-        return package_price;
+    public int getPackagePrice() {
+        return packagePrice;
     }
 
-    public void setPackage_price(int package_price) {
-        this.package_price = package_price;
+    public void setPackagePrice(int packagePrice) {
+        this.packagePrice = packagePrice;
     }
 
-    public Date getPackage_departure() {
-        return package_departure;
+    public Date getPackageDeparture() {
+        return packageDeparture;
     }
 
-    public void setPackage_departure(Date package_departure) {
-        this.package_departure = package_departure;
+    public void setPackageDeparture(Date packageDeparture) {
+        this.packageDeparture = packageDeparture;
     }
 
-    public Date getPackage_arrival() {
-        return package_arrival;
+    public Date getPackageArrival() {
+        return packageArrival;
     }
 
-    public void setPackage_arrival(Date package_arrival) {
-        this.package_arrival = package_arrival;
+    public void setPackageArrival(Date packageArrival) {
+        this.packageArrival = packageArrival;
     }
 
     @Override
     public String toString() {
         return "TravelPackage{" +
-                "package_number=" + package_number +
-                ", package_name='" + package_name + '\'' +
-                ", package_price=" + package_price +
-                ", package_departure=" + package_departure +
-                ", package_arrival=" + package_arrival +
+                "packageNumber=" + packageNumber +
+                ", packageName='" + packageName + '\'' +
+                ", packagePrice=" + packagePrice +
+                ", packageDeparture=" + packageDeparture +
+                ", packageArrival=" + packageArrival +
                 '}';
     }
 }

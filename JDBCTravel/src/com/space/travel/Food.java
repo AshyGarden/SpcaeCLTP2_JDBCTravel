@@ -1,33 +1,33 @@
 package com.space.travel;
 
 public class Food {
-    private int food_number;
-    private String food_name;
+    private int foodNumber;
+    private String foodName;
     private Place place;
 
     public Food() {
     }
 
-    public Food(int food_number, String food_name, Place place) {
-        this.food_number = food_number;
-        this.food_name = food_name;
+    public Food(int foodNumber, String foodName, Place place) {
+        this.foodNumber = foodNumber;
+        this.foodName = foodName;
         this.place = place;
     }
 
-    public int getFood_number() {
-        return food_number;
+    public int getFoodNumber() {
+        return foodNumber;
     }
 
-    public void setFood_number(int food_number) {
-        this.food_number = food_number;
+    public void setFoodNumber(int foodNumber) {
+        this.foodNumber = foodNumber;
     }
 
-    public String getFood_name() {
-        return food_name;
+    public String getFoodName() {
+        return foodName;
     }
 
-    public void setFood_name(String food_name) {
-        this.food_name = food_name;
+    public void setFoodName(String foodName) {
+        this.foodName = foodName;
     }
 
     public Place getPlace() {
@@ -41,8 +41,8 @@ public class Food {
     @Override
     public String toString() {
         return "Food{" +
-                "food_number=" + food_number +
-                ", food_name='" + food_name + '\'' +
+                "foodNumber=" + foodNumber +
+                ", foodName='" + foodName + '\'' +
                 ", place=" + place +
                 '}';
     }

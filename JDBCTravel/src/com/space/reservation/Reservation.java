@@ -1,4 +1,6 @@
 package com.space.reservation;
+import com.space.travel.TravelPackage;
+import com.space.customer.Customer;
 
 public class Reservation {
 	private TravelPackage travelPackage;
