@@ -3,54 +3,54 @@ package com.space.travel;
 import java.sql.Date;
 
 public class Lodging {
-    private int lodging_number;
-    private String lodging_name;
-    private Date lodging_arrival;
-    private Date lodging_departure;
+    private int lodgingNumber;
+    private String lodgingName;
+    private Date lodgingArrival;
+    private Date lodgingDeparture;
     private Place place;
+
 
     public Lodging() {
     }
 
-    public Lodging(int lodging_number, String lodging_name, Date lodging_arrival, Date lodging_departure, Place place) {
-        this.lodging_number = lodging_number;
-        this.lodging_name = lodging_name;
-        this.lodging_arrival = lodging_arrival;
-        this.lodging_departure = lodging_departure;
+    public Lodging(int lodgingNumber, String lodgingName, Date lodgingArrival, Date lodgingDeparture, Place place) {
+        this.lodgingNumber = lodgingNumber;
+        this.lodgingName = lodgingName;
+        this.lodgingArrival = lodgingArrival;
+        this.lodgingDeparture = lodgingDeparture;
         this.place = place;
     }
 
-
-    public int getLodging_number() {
-        return lodging_number;
+    public int getLodgingNumber() {
+        return lodgingNumber;
     }
 
-    public void setLodging_number(int lodging_number) {
-        this.lodging_number = lodging_number;
+    public void setLodgingNumber(int lodgingNumber) {
+        this.lodgingNumber = lodgingNumber;
     }
 
-    public String getLodging_name() {
-        return lodging_name;
+    public String getLodgingName() {
+        return lodgingName;
     }
 
-    public void setLodging_name(String lodging_name) {
-        this.lodging_name = lodging_name;
+    public void setLodgingName(String lodgingName) {
+        this.lodgingName = lodgingName;
     }
 
-    public Date getLodging_arrival() {
-        return lodging_arrival;
+    public Date getLodgingArrival() {
+        return lodgingArrival;
     }
 
-    public void setLodging_arrival(Date lodging_arrival) {
-        this.lodging_arrival = lodging_arrival;
+    public void setLodgingArrival(Date lodgingArrival) {
+        this.lodgingArrival = lodgingArrival;
     }
 
-    public Date getLodging_departure() {
-        return lodging_departure;
+    public Date getLodgingDeparture() {
+        return lodgingDeparture;
     }
 
-    public void setLodging_departure(Date lodging_departure) {
-        this.lodging_departure = lodging_departure;
+    public void setLodgingDeparture(Date lodgingDeparture) {
+        this.lodgingDeparture = lodgingDeparture;
     }
 
     public Place getPlace() {
@@ -64,10 +64,10 @@ public class Lodging {
     @Override
     public String toString() {
         return "Lodging{" +
-                "lodging_number=" + lodging_number +
-                ", lodging_name='" + lodging_name + '\'' +
-                ", lodging_arrival=" + lodging_arrival +
-                ", lodging_departure=" + lodging_departure +
+                "lodgingNumber=" + lodgingNumber +
+                ", lodgingName='" + lodgingName + '\'' +
+                ", lodgingArrival=" + lodgingArrival +
+                ", lodgingDeparture=" + lodgingDeparture +
                 ", place=" + place +
                 '}';
     }

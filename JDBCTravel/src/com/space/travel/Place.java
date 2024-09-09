@@ -4,57 +4,56 @@ import java.sql.Date;
 
 public class Place {
 
-    private int place_number;
-    private String place_name;
-    private Date place_arrival;
-    private Date place_departure;
+    private int placeNumber;
+    private String placeName;
+    private Date placeArrival;
+    private Date placeDeparture;
     private TravelPackage travelPackage;
 
     public Place() {
     }
 
-    public Place(int place_number, String place_name, Date place_arrival, Date place_departure, TravelPackage travelPackage) {
-        this.place_number = place_number;
-        this.place_name = place_name;
-        this.place_arrival = place_arrival;
-        this.place_departure = place_departure;
+    public Place(int placeNumber, String placeName, Date placeArrival, Date placeDeparture, TravelPackage travelPackage) {
+        this.placeNumber = placeNumber;
+        this.placeName = placeName;
+        this.placeArrival = placeArrival;
+        this.placeDeparture = placeDeparture;
         this.travelPackage = travelPackage;
     }
 
-    public int getPlace_number() {
-        return place_number;
+    public int getPlaceNumber() {
+        return placeNumber;
     }
 
-    public void setPlace_number(int place_number) {
-        this.place_number = place_number;
+    public void setPlaceNumber(int placeNumber) {
+        this.placeNumber = placeNumber;
     }
 
-    public String getPlace_name() {
-        return place_name;
+    public String getPlaceName() {
+        return placeName;
     }
 
-    public void setPlace_name(String place_name) {
-        this.place_name = place_name;
+    public void setPlaceName(String placeName) {
+        this.placeName = placeName;
     }
 
-    public Date getPlace_arrival() {
-        return place_arrival;
+    public Date getPlaceArrival() {
+        return placeArrival;
     }
 
-    public void setPlace_arrival(Date place_arrival) {
-        this.place_arrival = place_arrival;
+    public void setPlaceArrival(Date placeArrival) {
+        this.placeArrival = placeArrival;
     }
 
-    public Date getPlace_departure() {
-        return place_departure;
+    public Date getPlaceDeparture() {
+        return placeDeparture;
     }
 
-    public void setPlace_departure(Date place_departure) {
-        this.place_departure = place_departure;
+    public void setPlaceDeparture(Date placeDeparture) {
+        this.placeDeparture = placeDeparture;
     }
 
     public TravelPackage getTravelPackage() {
-
         return travelPackage;
     }
 
@@ -64,11 +63,11 @@ public class Place {
 
     @Override
     public String toString() {
-        return "TravelPackage{" +
-                "place_number=" + place_number +
-                ", place_name='" + place_name + '\'' +
-                ", place_arrival=" + place_arrival +
-                ", place_departure=" + place_departure +
+        return "Place{" +
+                "placeNumber=" + placeNumber +
+                ", placeName='" + placeName + '\'' +
+                ", placeArrival=" + placeArrival +
+                ", placeDeparture=" + placeDeparture +
                 ", travelPackage=" + travelPackage +
                 '}';
     }
