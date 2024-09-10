@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import com.space.global.*;
 import com.space.travel.Food;
+import com.space.travel.Lodging;
 
 public class TravelUpdateService implements Start {
 
@@ -64,7 +65,29 @@ public class TravelUpdateService implements Start {
     }
 
 
-    private void UpdateLodging() {
+    private boolean UpdateLodging() {
+    	Lodging lodging = new Lodging();
+    	
+    	boolean result = false;
+    	
+    	try(Connection connection = DataSource.getDataSource();
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE LODGINGS SET LODGING_NAME = ? WHERE LODGING_NO = ?")){ 
+    			
+			pStatement.setString(1, lodging.getLodgingName());
+			pStatement.setInt(2, lodging.getLodgingNumber());
+			
+			
+			int rows = pStatement.executeUpdate(); 
+			
+			if (rows > 0) {
+				result = true;
+			}
+    			
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		
+		return result; 
 
     }
 
