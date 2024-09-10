@@ -1,6 +1,11 @@
 package com.space.service;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
 import com.space.global.*;
+import com.space.travel.Food;
 
 public class TravelUpdateService implements Start {
 
@@ -33,9 +38,31 @@ public class TravelUpdateService implements Start {
         }
     }
 
-    private void UpdateFood() {
-
+    private boolean UpdateFood() {
+    	Food food = new Food();
+    	
+    	boolean result = false;
+    	
+    	try(Connection connection = DataSource.getDataSource();
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE FOODS SET FOOD_NAME = ? WHERE FOOD_NO = ?")){ 
+    			
+			pStatement.setString(1, food.getFoodName());
+			pStatement.setInt(2, food.getFoodNumber());
+			
+			
+			int rows = pStatement.executeUpdate(); 
+			
+			if (rows > 0) {
+				result = true;
+			}
+    			
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		
+		return result; 
     }
+
 
     private void UpdateLodging() {
 
