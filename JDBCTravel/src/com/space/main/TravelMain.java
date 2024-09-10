@@ -6,7 +6,7 @@ import com.space.global.AppUI;
 public class TravelMain {
 	
 	public static void main(String[] args) {	
-		System.out.println("tes222t");
+	
 		
 		
 		AppController controller = new AppController();
