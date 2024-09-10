@@ -13,7 +13,7 @@ public interface GlobalParams {
 
 	// 1. 여행패키지 추가
 	int insertTravelPackage = 11; 	//여행패키지 추가
-	int insertTravelPalce = 12; 	//여행지 추가
+	int insertTravelPlace = 12; 	//여행지 추가
 	int insertTravelLodging = 13;	//숙박시설 추가
 	int insertTravelFood = 14;		//음식 추가
 
@@ -31,11 +31,11 @@ public interface GlobalParams {
 	int updateTravelFood = 34;    	//음식 수정
 
 	// 4. 여행패키지 삭제
-	int deleteReservation = 40;   	//여행패키지 추가
-	int deleteTravelPackage = 41;   //여행패키지 조회
-	int deleteTravelPlace = 42;   	//여행지 조회
-	int deleteTravelLodging = 43; 	//숙박시설 조회
-	int deleteTravelFood = 44;    	//음식 조회
+	int deleteReservation = 40;   	//예약 삭제
+	int deleteTravelPackage = 41;   //여행패키지 삭제
+	int deleteTravelPlace = 42;   	//여행지 삭제
+	int deleteTravelLodging = 43; 	//숙박시설 삭제
+	int deleteTravelFood = 44;    	//음식 삭제
 
 	// 7. 여행패키지 기록
 	int searchTravelHistory = 71;   //여행패키지 기록 조회
