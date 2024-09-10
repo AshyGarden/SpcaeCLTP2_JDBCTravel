@@ -1,6 +1,6 @@
-package com.space.service;
+package com.space.delete;
 
 public interface DeleteInterface {
-    void deleteByID();
+    void deleteByCustomerNO(int customerNO);
     void deleteUnderCondition();
 }
