@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TravelDAO {
-
+    void deleteTravelByNO(int travelNumber);
 
     //Search(Select)
     List<TravelPackage> findAllTravels();                         // 모든 여행 패키지 찾기
