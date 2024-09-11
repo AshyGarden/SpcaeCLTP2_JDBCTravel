@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import com.space.dao.interfacedao.FoodDAO;
 import com.space.global.DataSource;
 import com.space.travel.Food;
+import com.space.global.AppUI;
 
 public class JDBCFoodDAO implements FoodDAO {
 
@@ -36,6 +37,20 @@ public class JDBCFoodDAO implements FoodDAO {
 		return result; 
 
 	}
-	
 
+	@Override
+	public void deleteByFoodNO(int foodNumber) {
+
+
+		try (Connection connection = DataSource.getDataSource();
+			 PreparedStatement preparedStatement
+					 = connection.prepareStatement("DELETE foods WHERE food_no = ?")) {
+			preparedStatement.setInt(1, foodNumber);
+			preparedStatement.executeUpdate();
+			AppUI.DeleteCompleteMessage();
+			}
+		catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 }

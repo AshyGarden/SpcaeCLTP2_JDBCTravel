@@ -71,12 +71,13 @@ public class AppUI {
 	
 	// 4. 여행패키지 취소
 	public static void TravelDeleteScreen() {
-		System.out.println("\n========== 여행패키지 수정 ==========");
+		System.out.println("\n========== 여행패키지 삭제 ==========");
 		System.out.println("### 40. 예약 삭제");
 		System.out.println("### 41. 여행패키지 삭제");
 		System.out.println("### 42. 여행지 삭제");
 		System.out.println("### 43. 숙박시설 삭제");
 		System.out.println("### 44. 음식 삭제");
+		System.out.println("### 45. 고객 정보 삭제");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
 		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
@@ -92,5 +93,14 @@ public class AppUI {
 		TerminateProgramMessages();
 		System.out.println("----------------------------------------");
 		System.out.print(">>> ");
+	}
+
+	// 8. ID 번호 요청
+	public static void SelectID(){
+		System.out.println("삭제하실 번호를 입력해주세요");
+	}
+	// 9. 삭제 완료 기록
+	public static void DeleteCompleteMessage(){
+		System.out.println("삭제를 완료했습니다.");
 	}
 }

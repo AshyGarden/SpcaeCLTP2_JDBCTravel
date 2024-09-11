@@ -1,7 +1,9 @@
 package com.space.main;
 
 import com.space.global.*;
+
 import com.space.service.TravelUpdateService;
+import com.space.service.TravelDeleteService;
 
 public class AppController {
 	
@@ -31,6 +33,8 @@ public class AppController {
 	    	case GlobalParams.travelDeleteNo:
 	    		System.out.println("여행 및 패키지 취소 모드로 돌입합니다.");
 	    		//tCancel.start();
+				TravelDeleteService travelDeleteService = new TravelDeleteService();
+				travelDeleteService.start();
 	    		break;
 	    		
 	    	//여행 및 패키지 기록 (예정)
