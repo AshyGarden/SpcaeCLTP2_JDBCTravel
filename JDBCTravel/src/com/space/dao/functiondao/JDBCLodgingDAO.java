@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import com.space.dao.interfacedao.LodgingDAO;
 import com.space.global.DataSource;
 import com.space.travel.Lodging;
+import com.space.global.AppUI;
 
 public class JDBCLodgingDAO implements LodgingDAO {
 
@@ -28,6 +29,8 @@ public class JDBCLodgingDAO implements LodgingDAO {
 			if (rows > 0) {
 				result = true;
 			}
+
+
     			
 		} catch (SQLException e) { 
 			e.printStackTrace();
@@ -37,5 +40,18 @@ public class JDBCLodgingDAO implements LodgingDAO {
 
 	}
 
+	@Override
+	public void deleteByLodgingNO(int lodgingNumber) {
+		try (Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement
+				 = connection.prepareStatement("DELETE lodgings WHERE lodging_no = ?")) {
+			preparedStatement.setInt(1, lodgingNumber);
+			preparedStatement.executeUpdate();
+			AppUI.DeleteCompleteMessage();
+		}
 
+		catch (SQLException e) {
+		e.printStackTrace();
+	}
+	}
 }
