@@ -2,11 +2,18 @@ package com.space.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.space.global.*;
+import com.space.global.AppFuncs;
+import com.space.global.AppUI;
+import com.space.global.DataSource;
+import com.space.global.GlobalParams;
+import com.space.global.Start;
 import com.space.travel.Food;
 import com.space.travel.Lodging;
+import com.space.travel.Place;
+import com.space.travel.TravelPackage;
 
 public class TravelUpdateService implements Start {
 
@@ -44,6 +51,12 @@ public class TravelUpdateService implements Start {
     	
     	boolean result = false;
     	
+    	System.out.println("enter the food number");
+    	int inputNum = AppFuncs.inputInteger();
+    	
+    	System.out.println("Enter new food Name");
+    	String inputWord = AppFuncs.inputString();
+    	
     	try(Connection connection = DataSource.getDataSource();
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE FOODS SET FOOD_NAME = ? WHERE FOOD_NO = ?")){ 
     			
@@ -70,6 +83,12 @@ public class TravelUpdateService implements Start {
     	
     	boolean result = false;
     	
+    	System.out.println("enter the lodging number");
+    	int inputNum = AppFuncs.inputInteger();
+    	
+    	System.out.println("Enter new Lodging Name");
+    	String inputWord = AppFuncs.inputString();
+    	
     	try(Connection connection = DataSource.getDataSource();
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE LODGINGS SET LODGING_NAME = ? WHERE LODGING_NO = ?")){ 
     			
@@ -91,11 +110,70 @@ public class TravelUpdateService implements Start {
 
     }
 
-    private void UpdatePlace() {
-
+    private boolean UpdatePlace() {
+    	Place place = new Place();
+    	
+    	boolean result = false;
+    	
+    	System.out.println("enter the place number");
+    	int inputNum = AppFuncs.inputInteger();
+    	
+    	System.out.println("Enter new Place Name");
+    	String inputWord = AppFuncs.inputString();
+    	
+    	try(Connection connection = DataSource.getDataSource();
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE PLACES SET PLACE_NAME = ? WHERE PLACE_NO = ?")){ 
+    		
+			pStatement.setString(1, inputWord);
+			pStatement.setInt(2, inputNum);
+			
+			
+			int rows = pStatement.executeUpdate(); 
+			
+			if (rows > 0) {
+				result = true;
+			}
+    		
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+			
+		return result; 
     }
 
-    private void UpdateTravel() {
+    private boolean UpdateTravel() {
+    	TravelPackage travelPackage = new TravelPackage();
+    	
+    	boolean result = false;
+    	
+    	System.out.println("Enter the travel package number to change");
+    	int inputNum = AppFuncs.inputInteger();
+    	
+    	System.out.println("Enter new travel package name");
+    	String inputName = AppFuncs.inputString();
+    	
+    	System.out.println("Enter new travel package price");
+    	int inputPrice = AppFuncs.inputInteger();
+    	
+    	try(Connection connection = DataSource.getDataSource();
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE TRAVELS SET TRAVEL_NAME = ?, TRAVEL_PRICE = ? WHERE TRAVEL_NO = ?")){ 
+    			
+			pStatement.setString(1, inputName);
+			pStatement.setInt(2, inputPrice);
+			pStatement.setInt(3, inputNum);
+		
+			
+			int rows = pStatement.executeUpdate(); 
+			
+			if (rows > 0) {
+				result = true;
+			}
+    			
+		} catch (SQLException e) { 
+			e.printStackTrace();
+		} 
+		
+		return result; 
 
     }
 }

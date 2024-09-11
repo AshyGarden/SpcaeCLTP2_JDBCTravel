@@ -1,8 +1,11 @@
 package com.space.main;
 
 import com.space.global.*;
+import com.space.service.TravelUpdateService;
 
 public class AppController {
+	
+	TravelUpdateService travelUpdateService = new TravelUpdateService();
 	
 	public void chooseSystem(int inputNum) {		
 		switch(inputNum) {  	
@@ -21,7 +24,7 @@ public class AppController {
 	    	//여행 및 패키지 수정 - 재연
 	    	case GlobalParams.travelUpdateNo:
 	    		System.out.println("여행 및 패키지 수정 모드로 돌입합니다.");
-	    		//tCancel.start();
+	    		travelUpdateService.start();
 	    		break;
 	    		
 	    	//여행 및 패키지 취소 - 영훈
