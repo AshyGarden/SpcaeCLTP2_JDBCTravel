@@ -36,6 +36,7 @@ public interface GlobalParams {
 	int deleteTravelPlace = 42;   	//여행지 삭제
 	int deleteTravelLodging = 43; 	//숙박시설 삭제
 	int deleteTravelFood = 44;    	//음식 삭제
+	int deleteTravelCustomer = 45; //고객 정보 삭제
 
 	// 7. 여행패키지 기록
 	int searchTravelHistory = 71;   //여행패키지 기록 조회
