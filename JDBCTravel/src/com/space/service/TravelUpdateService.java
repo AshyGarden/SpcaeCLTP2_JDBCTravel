@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.space.dao.functiondao.JDBCTravelDAO;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 import com.space.global.DataSource;
@@ -141,39 +142,39 @@ public class TravelUpdateService implements Start {
 		return result; 
     }
 
-    private boolean UpdateTravel() {
-    	TravelPackage travelPackage = new TravelPackage();
+    private void UpdateTravel() {
+    	JDBCTravelDAO jdbcTravelDao = new JDBCTravelDAO();
+    	System.out.println("enter the travel number to change");
+    	int travelNumber = AppFuncs.inputInteger();
+    	jdbcTravelDao.updateTravelByNo(travelNumber);
     	
-    	boolean result = false;
-    	
-    	System.out.println("Enter the travel package number to change");
-    	int inputNum = AppFuncs.inputInteger();
-    	
-    	System.out.println("Enter new travel package name");
-    	String inputName = AppFuncs.inputString();
-    	
-    	System.out.println("Enter new travel package price");
-    	int inputPrice = AppFuncs.inputInteger();
-    	
-    	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE TRAVELS SET TRAVEL_NAME = ?, TRAVEL_PRICE = ? WHERE TRAVEL_NO = ?")){ 
-    			
-			pStatement.setString(1, inputName);
-			pStatement.setInt(2, inputPrice);
-			pStatement.setInt(3, inputNum);
-		
-			
-			int rows = pStatement.executeUpdate(); 
-			
-			if (rows > 0) {
-				result = true;
-			}
-    			
-		} catch (SQLException e) { 
-			e.printStackTrace();
-		} 
-		
-		return result; 
 
+    }
+    
+    public TravelPackage findById(int packageNumber){
+    	TravelPackage travelPackage = null;
+		
+		try (Connection connection = DataSource.getDataSource();
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM TRAVELS WHERE TRAVEL_NO = ?"))
+				{ 
+			pStatement.setInt(1, packageNumber);		
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.next()) {
+				travelPackage = new TravelPackage();
+				
+				pStatement.setInt(1, packageNumber);
+				travelPackage.setPackageName(rs.getString("travel_name")); 
+				travelPackage.setPackagePrice(rs.getInt("travel_price"));
+				travelPackage.setPackageDeparture(rs.getDate("travel_Departure"));
+				travelPackage.setPackageArrival(rs.getDate("travel_Arrival"));
+			
+			}
+				
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		return travelPackage ;
     }
 }
