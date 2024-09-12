@@ -5,15 +5,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.space.dao.functiondao.JDBCFoodDAO;
+import com.space.dao.functiondao.JDBCLodgingDAO;
+import com.space.dao.functiondao.JDBCPlaceDAO;
 import com.space.dao.functiondao.JDBCTravelDAO;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 import com.space.global.DataSource;
 import com.space.global.GlobalParams;
 import com.space.global.Start;
-import com.space.travel.Food;
-import com.space.travel.Lodging;
-import com.space.travel.Place;
 import com.space.travel.TravelPackage;
 
 public class TravelUpdateService implements Start {
@@ -47,99 +47,26 @@ public class TravelUpdateService implements Start {
         }
     }
 
-    private boolean UpdateFood() {
-    	Food food = new Food();
-    	
-    	boolean result = false;
-    	
-    	System.out.println("enter the food number");
-    	int inputNum = AppFuncs.inputInteger();
-    	
-    	System.out.println("Enter new food Name");
-    	String inputWord = AppFuncs.inputString();
-    	
-    	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE FOODS SET FOOD_NAME = ? WHERE FOOD_NO = ?")){ 
-    			
-			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
-			
-			
-			int rows = pStatement.executeUpdate();
-			
-			if (rows > 0) {
-				result = true;
-			}
-    			
-		} catch (SQLException e) { 
-			e.printStackTrace();
-		} 
-		
-		return result; 
+    private void UpdateFood() {
+    	JDBCFoodDAO jdbcFoodDao = new JDBCFoodDAO();
+    	System.out.println("enter the food number to change");
+    	int foodNumber = AppFuncs.inputInteger();
+    	jdbcFoodDao.updateFoodByNO(foodNumber);
     }
 
 
-    private boolean UpdateLodging() {
-    	Lodging lodging = new Lodging();
-    	
-    	boolean result = false;
-    	
-    	System.out.println("enter the lodging number");
-    	int inputNum = AppFuncs.inputInteger();
-    	
-    	System.out.println("Enter new Lodging Name");
-    	String inputWord = AppFuncs.inputString();
-    	
-    	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE LODGINGS SET LODGING_NAME = ? WHERE LODGING_NO = ?")){ 
-    			
-			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
-			
-			
-			int rows = pStatement.executeUpdate(); 
-			
-			if (rows > 0) {
-				result = true;
-			}
-    			
-		} catch (SQLException e) { 
-			e.printStackTrace();
-		} 
-		
-		return result; 
-
+    private void UpdateLodging() {
+    	JDBCLodgingDAO jdbcLodingDao = new JDBCLodgingDAO();
+    	System.out.println("enter the lodging number to change");
+    	int lodingNumber = AppFuncs.inputInteger();
+    	jdbcLodingDao.updateLodgingByNO(lodingNumber);
     }
 
-    private boolean UpdatePlace() {
-    	Place place = new Place();
-    	
-    	boolean result = false;
-    	
-    	System.out.println("enter the place number");
-    	int inputNum = AppFuncs.inputInteger();
-    	
-    	System.out.println("Enter new Place Name");
-    	String inputWord = AppFuncs.inputString();
-    	
-    	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE PLACES SET PLACE_NAME = ? WHERE PLACE_NO = ?")){ 
-    		
-			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
-			
-			
-			int rows = pStatement.executeUpdate(); 
-			
-			if (rows > 0) {
-				result = true;
-			}
-    		
-		} catch (SQLException e) { 
-			e.printStackTrace();
-		} 
-			
-		return result; 
+    private void UpdatePlace() {
+    	JDBCPlaceDAO jdbcPlaceDao = new JDBCPlaceDAO();
+    	System.out.println("enter the place number to change");
+    	int placeNumber = AppFuncs.inputInteger();
+    	jdbcPlaceDao.updatePlaceByNO(placeNumber);
     }
 
     private void UpdateTravel() {
