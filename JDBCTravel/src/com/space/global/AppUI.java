@@ -103,4 +103,10 @@ public class AppUI {
 	public static void DeleteCompleteMessage(){
 		System.out.println("삭제를 완료했습니다.");
 	}
+
+
+	// 10. Insert 요청 구문
+	public static void TypeSelection(String tableName){
+		System.out.println(tableName + "을(를) 입력해주세요");
+	}
 }

@@ -7,10 +7,7 @@ import com.space.global.DataSource;
 import com.space.service.TravelUpdateService;
 import com.space.travel.TravelPackage;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.SQLIntegrityConstraintViolationException;
+import java.sql.*;
 
 public class JDBCTravelDAO implements TravelDAO{
     @Override
@@ -79,6 +76,43 @@ public class JDBCTravelDAO implements TravelDAO{
 		return result; 
 		
 	}
-    
-    
+
+	@Override
+	public void insertTravel() {
+		AppUI.TypeSelection("패키지 번호");
+		int inputTravelNO = AppFuncs.inputInteger();
+
+		AppUI.TypeSelection("패키지 이름");
+		String inputTravelName = AppFuncs.inputString();
+
+		AppUI.TypeSelection("패키지 가격");
+		int inputTravelPrice = AppFuncs.inputInteger();
+
+		AppUI.TypeSelection("출발 시간");
+		Date inputTravleDeparture = AppFuncs.inputDate();
+
+		AppUI.TypeSelection("출발 시간");
+		Date inputTravleArrival = AppFuncs.inputDate();
+
+
+
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Travels " +
+					"(TRAVEL_NO, TRAVEL_NAME, TRAVEL_PRICE, TRAVEL_DEPARTURE, TRAVEL_ARRIVAL) VALUES (?,?,?,?,?)"))
+		{
+
+			preparedStatement.setInt(1, inputTravelNO);
+			preparedStatement.setString(2, inputTravelName);
+			preparedStatement.setInt(3, inputTravelPrice);
+			preparedStatement.setDate(3, inputTravleDeparture);
+			preparedStatement.setDate(3, inputTravleArrival);
+
+
+			preparedStatement.executeUpdate();
+
+		}catch (SQLException e){
+
+			e.printStackTrace();
+		}
+	}
 }
