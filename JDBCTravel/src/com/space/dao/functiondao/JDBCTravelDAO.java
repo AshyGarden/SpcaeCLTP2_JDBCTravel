@@ -146,7 +146,7 @@ public class JDBCTravelDAO implements TravelDAO{
 		
     	TravelPackage travelPackage = new TravelPackage();
     	travelPackage = travelUpdateService.findById(travelNumber);
-
+    	
     	System.out.println("Enter new travel package name");
     	String inputName = AppFuncs.inputString();
     	
@@ -173,12 +173,55 @@ public class JDBCTravelDAO implements TravelDAO{
 			pStatement.setInt(3, travelNumber);
 		
 			
-			pStatement.executeUpdate();
-
+			pStatement.executeUpdate(); 
+			
 
     			
 		} catch (SQLException e) { 
 			e.printStackTrace();
+		} 
+		
+
+	}
+
+	@Override
+	public void insertTravel() {
+		AppUI.TypeSelection("패키지 번호");
+		int inputTravelNO = AppFuncs.inputInteger();
+
+		AppUI.TypeSelection("패키지 이름");
+		String inputTravelName = AppFuncs.inputString();
+
+		AppUI.TypeSelection("패키지 가격");
+		int inputTravelPrice = AppFuncs.inputInteger();
+
+		AppUI.TypeSelection("출발 시간");
+		Date inputTravleDeparture = AppFuncs.inputDate();
+
+		AppUI.TypeSelection("출발 시간");
+		Date inputTravleArrival = AppFuncs.inputDate();
+
+
+
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO Travels " +
+					"(TRAVEL_NO, TRAVEL_NAME, TRAVEL_PRICE, TRAVEL_DEPARTURE, TRAVEL_ARRIVAL) VALUES (?,?,?,?,?)"))
+		{
+
+			preparedStatement.setInt(1, inputTravelNO);
+			preparedStatement.setString(2, inputTravelName);
+			preparedStatement.setInt(3, inputTravelPrice);
+			preparedStatement.setDate(3, inputTravleDeparture);
+			preparedStatement.setDate(3, inputTravleArrival);
+
+
+			preparedStatement.executeUpdate();
+
+		}catch (SQLException e){
+
+			e.printStackTrace();
 		}
 	}
+    
+    
 }
