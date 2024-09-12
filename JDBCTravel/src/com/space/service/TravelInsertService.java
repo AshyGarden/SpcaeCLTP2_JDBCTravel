@@ -3,6 +3,7 @@ package com.space.service;
 import com.space.dao.functiondao.JDBCFoodDAO;
 import com.space.dao.functiondao.JDBCLodgingDAO;
 import com.space.dao.functiondao.JDBCPlaceDAO;
+import com.space.dao.functiondao.JDBCTravelDAO;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 import com.space.global.GlobalParams;
@@ -56,5 +57,7 @@ public class TravelInsertService implements Start {
    
 
     private void InsertTravel() {
+        JDBCTravelDAO jdbcTravelDAO = new JDBCTravelDAO();
+        jdbcTravelDAO.insertTravel();
     }
 }

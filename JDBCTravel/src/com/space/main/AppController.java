@@ -2,6 +2,7 @@ package com.space.main;
 
 import com.space.global.*;
 
+import com.space.service.TravelInsertService;
 import com.space.service.TravelUpdateService;
 import com.space.service.TravelDeleteService;
 
@@ -15,6 +16,8 @@ public class AppController {
 	    	case GlobalParams.travelInsertNo:
 	    		System.out.println("여행 및 패키지 추가 모드로 돌입합니다.");
 	    		//tCancel.start();
+				TravelInsertService travelInsertService = new TravelInsertService();
+				travelInsertService.start();
 	    		break;
 	    		
 	    	//여행 및 패키지 조회 - 용준
