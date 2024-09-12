@@ -15,12 +15,12 @@ public class JDBCTravelDAO implements TravelDAO{
     public List<TravelPackage> findAllTravels() {  // 모든 여행 패키지 찾기
 
         List<TravelPackage> travels = new ArrayList<TravelPackage>();
-        String chosen = "";
         System.out.println("조회 규칙을 설정해주세요");
         System.out.println("[1. 오름차순 / 2. 내림차순]");
         System.out.print(">>>");
         int inputNum = AppFuncs.inputInteger();
 
+        String chosen = "";
         boolean flag = false; //입력플래그
         while(!flag) {
             if(inputNum == 1){
@@ -64,44 +64,44 @@ public class JDBCTravelDAO implements TravelDAO{
     }
 
     @Override
-    public List<TravelPackage> findTravel(int i) { // 숫자로 여행패키지 찾기
-        List<TravelPackage> travels = new ArrayList<TravelPackage>();
+    public TravelPackage findTravel(int i) { // 숫자로 여행패키지 찾기
+        TravelPackage travel = new TravelPackage();
 
         try (Connection conn = DataSource.getDataSource();
              PreparedStatement pStat = conn.prepareStatement("SELECT * FROM TRAVELS "
-                     + "ORDER BY TRAVEL_NO ASC");
-             ResultSet rs = pStat.executeQuery()) {
+                     + "ORDER BY TRAVEL_NO ASC")) {
 
-            while(rs.next()) {
-                TravelPackage travel = new TravelPackage();
+            ResultSet rs = pStat.executeQuery();
+            if(rs.next()) {
                 travel.setPackageNumber(rs.getInt("TRAVEL_NO"));
                 travel.setPackageName(rs.getString("TRAVEL_NAME"));
                 travel.setPackagePrice(rs.getInt("TRAVEL_PRICE"));
                 travel.setPackageDeparture(rs.getDate("TRAVEL_DEPARTURE"));
                 travel.setPackageArrival(rs.getDate("TRAVEL_ARRIVAL"));
-
-                travels.add(travel);
             }
 
-            System.out.println("--- 여행 패키지 전제 조회 결과는 다음과 같습니다---");
-            for(TravelPackage t: travels) {
-                System.out.println(t);
-            }
+            System.out.println("--- 여행 패키지 번호로 조회 결과는 다음과 같습니다---");
+            System.out.println(travel);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return travels;
+        return travel;
     }
 
     @Override
-    public List<TravelPackage> findTravel(String name) { // 이름으로 여행패키지 찾기
+    public List<TravelPackage> findTravels(int i) {
         return List.of();
     }
 
     @Override
-    public List<TravelPackage> findTravel(LocalDateTime localDateTime) { // 날짜로 여행패키지 찾기
+    public List<TravelPackage> findTravels(String name) {
+        return List.of();
+    }
+
+    @Override
+    public List<TravelPackage> findTravels(LocalDateTime localDateTime) {
         return List.of();
     }
 
