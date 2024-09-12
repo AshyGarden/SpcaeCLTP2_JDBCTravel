@@ -7,8 +7,6 @@ import java.util.List;
 
 public interface TravelDAO {
 
-
-
     //Search(Select)
     List<TravelPackage> findAllTravels();                          // 모든 여행 패키지 찾기
     TravelPackage findTravel(int inputNum);                        // 숫자로 여행패키지 찾기     // 숫자로 여행패키지들 찾기
@@ -17,10 +15,10 @@ public interface TravelDAO {
     List<TravelPackage> findTravels(LocalDateTime localDateTime);  // 날짜로 여행패키지 찾기
 
     //update
-    boolean updateTravelByNo(int travelNumber);
+    void deleteTravelByNO(int travelNumber);
+    void updateTravelByNo(int travelNumber);
 
     //Delete
     void deleteTravelByNO(int travelNumber);
-
 
 }

@@ -141,53 +141,48 @@ public class JDBCTravelDAO implements TravelDAO{
     }
 
 	@Override
-	public boolean updateTravelByNo(int travelNumber) {
+	public void updateTravelByNo(int travelNumber) {
 		TravelUpdateService travelUpdateService = new TravelUpdateService();
-
+		
     	TravelPackage travelPackage = new TravelPackage();
     	travelPackage = travelUpdateService.findById(travelNumber);
 
-    	boolean result = false;
-
     	System.out.println("Enter new travel package name");
     	String inputName = AppFuncs.inputString();
-
-    	System.out.println("Enter new travel package price/if no change, press -1");
+    	
+    	System.out.println("Enter new travel package price(If no change, press -1): ");
     	int inputPrice = AppFuncs.inputInteger();
-
+    	
     	try(Connection connection = DataSource.getDataSource();
-    			PreparedStatement pStatement = connection.prepareStatement("UPDATE TRAVELS SET TRAVEL_NAME = ?, TRAVEL_PRICE = ? WHERE TRAVEL_NO = ?")){
-
+    			PreparedStatement pStatement = connection.prepareStatement("UPDATE TRAVELS SET TRAVEL_NAME = ?, TRAVEL_PRICE = ? WHERE TRAVEL_NO = ?")){ 
+    			
     		if(!inputName.isEmpty()) {
     			pStatement.setString(1, inputName);
     		} else {
     			pStatement.setString(1, travelPackage.getPackageName());
     		}
-
+			
     		if(inputPrice == -1) {
     			pStatement.setInt(2, travelPackage.getPackagePrice());
     		} else {
     			pStatement.setInt(2, inputPrice);
-
+    			
     		}
-
-
+			
+		
 			pStatement.setInt(3, travelNumber);
+		
+			
+			pStatement.executeUpdate();
 
 
-			int rows = pStatement.executeUpdate();
-
-			if (rows > 0) {
-				result = true;
-			}
-
-		} catch (SQLException e) {
+    			
+		} catch (SQLException e) { 
 			e.printStackTrace();
-		}
-
-		return result;
+		} 
+		
 
 	}
-
-
+    
+    
 }
