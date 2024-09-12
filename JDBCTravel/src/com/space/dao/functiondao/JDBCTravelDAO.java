@@ -32,18 +32,16 @@ public class JDBCTravelDAO implements TravelDAO{
     }
 
 	@Override
-	public boolean updateTravelByNo(int travelNumber) {
+	public void updateTravelByNo(int travelNumber) {
 		TravelUpdateService travelUpdateService = new TravelUpdateService();
 		
-    	TravelPackage travelPackage = new TravelPackage();
+    	TravelPackage travelPackage = new TravelPackage(); 
     	travelPackage = travelUpdateService.findById(travelNumber);
-    	
-    	boolean result = false;
     	
     	System.out.println("Enter new travel package name");
     	String inputName = AppFuncs.inputString();
     	
-    	System.out.println("Enter new travel package price/if no change, press -1");
+    	System.out.println("Enter new travel package price(If no change, press -1): ");
     	int inputPrice = AppFuncs.inputInteger();
     	
     	try(Connection connection = DataSource.getDataSource();
@@ -66,17 +64,14 @@ public class JDBCTravelDAO implements TravelDAO{
 			pStatement.setInt(3, travelNumber);
 		
 			
-			int rows = pStatement.executeUpdate(); 
+			pStatement.executeUpdate(); 
 			
-			if (rows > 0) {
-				result = true;
-			} 
+
     			
 		} catch (SQLException e) { 
 			e.printStackTrace();
 		} 
 		
-		return result; 
 		
 	}
     

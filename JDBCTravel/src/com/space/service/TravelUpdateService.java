@@ -61,11 +61,11 @@ public class TravelUpdateService implements Start {
     	try(Connection connection = DataSource.getDataSource();
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE FOODS SET FOOD_NAME = ? WHERE FOOD_NO = ?")){ 
     			
-			pStatement.setString(1, food.getFoodName());
-			pStatement.setInt(2, food.getFoodNumber());
+			pStatement.setString(1, inputWord);
+			pStatement.setInt(2, inputNum);
 			
 			
-			int rows = pStatement.executeUpdate(); 
+			int rows = pStatement.executeUpdate();
 			
 			if (rows > 0) {
 				result = true;
@@ -93,8 +93,8 @@ public class TravelUpdateService implements Start {
     	try(Connection connection = DataSource.getDataSource();
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE LODGINGS SET LODGING_NAME = ? WHERE LODGING_NO = ?")){ 
     			
-			pStatement.setString(1, lodging.getLodgingName());
-			pStatement.setInt(2, lodging.getLodgingNumber());
+			pStatement.setString(1, inputWord);
+			pStatement.setInt(2, inputNum);
 			
 			
 			int rows = pStatement.executeUpdate(); 
@@ -152,7 +152,7 @@ public class TravelUpdateService implements Start {
     }
     
     public TravelPackage findById(int packageNumber){
-    	TravelPackage travelPackage = null;
+    	TravelPackage travelPackage = new TravelPackage();
 		
 		try (Connection connection = DataSource.getDataSource();
 				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM TRAVELS WHERE TRAVEL_NO = ?"))
@@ -160,9 +160,7 @@ public class TravelUpdateService implements Start {
 			pStatement.setInt(1, packageNumber);		
 			ResultSet rs = pStatement.executeQuery();
 			if(rs.next()) {
-				travelPackage = new TravelPackage();
 				
-				pStatement.setInt(1, packageNumber);
 				travelPackage.setPackageName(rs.getString("travel_name")); 
 				travelPackage.setPackagePrice(rs.getInt("travel_price"));
 				travelPackage.setPackageDeparture(rs.getDate("travel_Departure"));
