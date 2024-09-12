@@ -1,7 +1,11 @@
 package com.space.global;
 
+import java.sql.Date;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -10,7 +14,7 @@ public class AppFuncs {
 	private static Scanner sc = new Scanner(System.in);
 	
 	public static String inputString() { //문자를 입력받는 곳에서 사용
-		return sc.nextLine();
+		return sc.nextLine();  
 	}
 
 	public static int inputInteger() { //숫자를 입력받는 곳에서 사용
@@ -25,6 +29,26 @@ public class AppFuncs {
 
 		return inputNum;
 	}
+	
+	//DATE
+	public static Date inputDate() {
+		Date sqlDate = null;
+		
+		System.out.println("Enter a date in 'YY/MM/DD' format: ");
+		String inputDate = sc.nextLine();
+		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
+		try {
+            LocalDate date = LocalDate.parse(inputDate, inputFormatter);
+            sqlDate = Date.valueOf(date);
+     
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format. Please use 'yy/MM/dd'.");
+        }
+		
+		return sqlDate;
+    }
+
+	
 	
 	//시간 간격 함수
 	public static String BlockTime(LocalDateTime depart,LocalDateTime arrive) {	
