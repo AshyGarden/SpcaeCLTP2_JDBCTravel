@@ -56,11 +56,6 @@ public class JDBCFoodDAO implements FoodDAO {
 
 	@Override
 	public void insertFood() {
-		Food food = new Food();
-		
-		Place place = new Place();
-		
-		
 		System.out.println("enter the food number");
     	int inputNum = AppFuncs.inputInteger();
     	
