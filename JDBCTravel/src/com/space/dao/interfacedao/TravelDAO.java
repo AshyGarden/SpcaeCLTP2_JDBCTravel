@@ -15,7 +15,6 @@ public interface TravelDAO {
     List<TravelPackage> findTravels(LocalDateTime localDateTime);  // 날짜로 여행패키지 찾기
 
     //update
-    void deleteTravelByNO(int travelNumber);
     void updateTravelByNo(int travelNumber);
 
     //Delete

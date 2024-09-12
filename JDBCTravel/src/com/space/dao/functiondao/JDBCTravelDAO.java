@@ -179,10 +179,6 @@ public class JDBCTravelDAO implements TravelDAO{
     			
 		} catch (SQLException e) { 
 			e.printStackTrace();
-		} 
-		
-
+		}
 	}
-    
-    
 }

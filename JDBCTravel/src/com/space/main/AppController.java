@@ -2,6 +2,7 @@ package com.space.main;
 
 import com.space.global.*;
 import com.space.service.*;
+import com.space.service.search.*;
 
 public class AppController {
 
