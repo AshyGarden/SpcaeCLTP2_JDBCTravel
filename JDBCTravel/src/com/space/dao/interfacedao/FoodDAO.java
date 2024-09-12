@@ -1,7 +1,8 @@
 package com.space.dao.interfacedao;
 
 public interface FoodDAO {
-	boolean updateFood();
+	void updateFoodByNO(int foodNumber);
 	void deleteByFoodNO(int foodNumber);
+	void insertFood( );
 
 }

@@ -1,7 +1,8 @@
 package com.space.dao.interfacedao;
 
 public interface LodgingDAO {
-	boolean updateLodging();
+	void updateLodgingByNO(int lodgingNumber);
 	void deleteByLodgingNO(int lodgingNumber);
+	void insertLodging();
 
 }
