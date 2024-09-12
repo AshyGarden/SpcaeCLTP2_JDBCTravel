@@ -18,6 +18,7 @@ public interface TravelDAO {
 
     //Delete
     void deleteTravelByNO(int travelNumber);
+    boolean updateTravelByNo(int travelNumber);
 
 
 }
