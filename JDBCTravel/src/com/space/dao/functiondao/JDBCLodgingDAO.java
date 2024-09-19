@@ -1,15 +1,14 @@
 package com.space.dao.functiondao;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 import com.space.dao.interfacedao.LodgingDAO;
 import com.space.global.DataSource;
+import com.space.travel.Food;
 import com.space.travel.Lodging;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
+import com.space.travel.Place;
 
 public class JDBCLodgingDAO implements LodgingDAO {
 	@Override
@@ -87,5 +86,74 @@ public class JDBCLodgingDAO implements LodgingDAO {
 				e.printStackTrace();
 			}
 	}
-		
+
+	@Override
+	public Lodging searchByNO() {
+		System.out.println("Please Type lodging number");
+		int lodgingNumber = AppFuncs.inputInteger();
+
+		Lodging lodging = null;
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM lodgings WHERE lodging_no= ?")){
+
+			preparedStatement.setInt(1,lodgingNumber);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+
+				lodging = new Lodging();
+				lodging.setLodgingNumber(resultSet.getInt("lodging_no"));
+				lodging.setLodgingName(resultSet.getString("lodging_name"));
+				lodging.setLodgingArrival(resultSet.getDate("lodging_arrival"));
+				lodging.setLodgingDeparture(resultSet.getDate("lodging_departure"));
+
+				Place place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				lodging.setPlace(place);
+			} else {
+				System.out.println("There isn't such lodging");
+			}
+
+
+
+		} catch(SQLException e){
+			System.err.println("There isn't such lodging");
+		}
+		return lodging;
+	}
+
+	@Override
+	public Lodging searchByName() {
+		System.out.println("Please Type lodging name");
+		String lodgingName = AppFuncs.inputString();
+
+		Lodging lodging = null;
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM lodgings WHERE lodging_name= ?")){
+
+			preparedStatement.setString(1,lodgingName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+
+				lodging = new Lodging();
+				lodging.setLodgingNumber(resultSet.getInt("lodging_no"));
+				lodging.setLodgingName(resultSet.getString("lodging_name"));
+				lodging.setLodgingArrival(resultSet.getDate("lodging_arrival"));
+				lodging.setLodgingDeparture(resultSet.getDate("lodging_departure"));
+
+				Place place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				lodging.setPlace(place);
+			} else {
+				System.err.println("There isn't such lodging");
+			}
+
+
+
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		return lodging;
+	}
 }
