@@ -1,10 +1,16 @@
 package com.space.service.search;
 
-import com.space.dao.functiondao.JDBCTravelDAO;
-import com.space.dao.interfacedao.TravelDAO;
 import com.space.global.*;
+import com.space.dao.functiondao.*;
+import com.space.dao.interfacedao.*;
 
 public class TravelSearchService implements Start {
+
+    TravelSearchRsvService travelSearchRsvService = new TravelSearchRsvService();
+    TravelSearchPackageService travelSearchPackageService = new TravelSearchPackageService();
+    TravelSearchPlaceService travelSearchPlaceService = new TravelSearchPlaceService();
+    TravelSearchLodgingService travelSearchLodgingService = new TravelSearchLodgingService();
+    TravelSearchFoodService travelSearchFoodService = new TravelSearchFoodService();
 
     @Override
     public void start() {
@@ -16,19 +22,19 @@ public class TravelSearchService implements Start {
                 case GlobalParams.returnNum:                //상위 메뉴로 돌아가기
                     return; //메인화면으로 돌아가기
                 case GlobalParams.searchRsv:                //예약 조회
-                    SearchReservation();
+                    travelSearchRsvService.start();
                     break;
                 case GlobalParams.searchTravelPackage:      //여행패키지 조회
-                    SearchTravel();
+                    travelSearchPackageService.start();
                     break;
                 case GlobalParams.searchTravelPlace:        //여행지 조회
-                    SearchPlace();
+                    travelSearchPlaceService.start();
                     break;
                 case GlobalParams.searchTravelLodging:      //숙박시설 조회
-                    SearchLodging();
+                    travelSearchLodgingService.start();
                     break;
                 case GlobalParams.searchTravelFood:         //음식 조회
-                    SearchFood();
+                    travelSearchFoodService.start();
                     break;
                 default:
                     AppUI.DefaultMessages();
@@ -37,26 +43,4 @@ public class TravelSearchService implements Start {
             AppFuncs.inputString();
         }
     }
-
-    private void SearchFood() {
-
-    }
-
-    private void SearchLodging() {
-
-    }
-
-    private void SearchPlace() {
-
-    }
-
-    private void SearchTravel() {
-        TravelDAO dao = new JDBCTravelDAO();
-        dao.findAllTravels();
-    }
-
-    private void SearchReservation() {
-
-    }
-
 }

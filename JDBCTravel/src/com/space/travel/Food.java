@@ -40,10 +40,8 @@ public class Food {
 
     @Override
     public String toString() {
-        return "Food{" +
-                "foodNumber=" + foodNumber +
-                ", foodName='" + foodName + '\'' +
-                ", place=" + place +
-                '}';
+        return "[음식번호: " + foodNumber +
+                " / 음식명: " + foodName +
+                "]";
     }
 }

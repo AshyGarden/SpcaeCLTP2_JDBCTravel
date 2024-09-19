@@ -63,12 +63,10 @@ public class Lodging {
 
     @Override
     public String toString() {
-        return "Lodging{" +
-                "lodgingNumber=" + lodgingNumber +
-                ", lodgingName='" + lodgingName + '\'' +
-                ", lodgingArrival=" + lodgingArrival +
-                ", lodgingDeparture=" + lodgingDeparture +
-                ", place=" + place +
-                '}';
+        return  "[숙박시설번호: " + lodgingNumber +
+                " / 숙박시설명: " + lodgingName + '\'' +
+                " / 숙박시설 도착일: " + lodgingArrival +
+                " / 숙박시설 출발일: " + lodgingDeparture +
+                "]";
     }
 }

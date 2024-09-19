@@ -19,12 +19,17 @@ public class AppFuncs {
 
 	public static int inputInteger() { //숫자를 입력받는 곳에서 사용
 		int inputNum = 0;
+		String input = sc.nextLine(); // 먼저 한 줄을 입력받기
+
+		// 빈 줄(엔터만 입력)일 경우 0을 반환하거나 원하는 다른 값을 반환할 수 있습니다.
+		if (input.isEmpty()) {
+			return GlobalParams.avoidNo; // 또는 원하는 값으로 반환
+		}
+
 		try {
-			inputNum = sc.nextInt();
-		} catch (InputMismatchException e) {
-			System.out.println("정수로 입력해 주세요.");				
-		} finally {
-			sc.nextLine();
+			inputNum = Integer.parseInt(input); // 입력된 문자열을 숫자로 변환
+		} catch (NumberFormatException e) {
+			System.out.println("정수로 입력해 주세요.");
 		}
 
 		return inputNum;
@@ -36,6 +41,7 @@ public class AppFuncs {
 		
 		System.out.println("Enter a date in 'YY/MM/DD' format: ");
 		String inputDate = sc.nextLine();
+
 		DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yy/MM/dd");
 		try {
             LocalDate date = LocalDate.parse(inputDate, inputFormatter);
@@ -64,15 +70,14 @@ public class AppFuncs {
 	public static String SortingLogic(){
 
 		System.out.println("조회 규칙을 설정해주세요");
-		System.out.println("[1. 오름차순 / 2. 내림차순 / 그 외. 기본조건(Default)]");
-		System.out.print(">>>");
-		int inputNum = AppFuncs.inputInteger();
-		if(inputNum == 1){
-			return "ASC";
-		} else if(inputNum == 2){
-			return "DESC";
-		} else{
-			return "";
+		System.out.println("[1. 오름차순 / 2. 내림차순]");
+		while(true){
+			System.out.print(">>>");
+			int inputNum = AppFuncs.inputInteger();
+
+			if(inputNum ==1) return "ASC";
+			else if(inputNum == 2) return "DESC";
+			else System.out.println("잘못 입력하셨습니다. 다시 입력해주세요.");
 		}
 	}
 
