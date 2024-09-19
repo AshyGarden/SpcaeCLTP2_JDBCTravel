@@ -39,8 +39,8 @@ public class JDBCTravelDAO implements TravelDAO{
             preparedStatement.setInt(1, inputTravelNO);
             preparedStatement.setString(2, inputTravelName);
             preparedStatement.setInt(3, inputTravelPrice);
-            preparedStatement.setDate(3, inputTravleDeparture);
-            preparedStatement.setDate(3, inputTravleArrival);
+            preparedStatement.setDate(4, inputTravleDeparture);
+            preparedStatement.setDate(5, inputTravleArrival);
 
             preparedStatement.executeUpdate();
 

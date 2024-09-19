@@ -24,15 +24,6 @@ public interface GlobalParams {
 	int searchTravelLodging = 23;   //숙박시설 조회
 	int searchTravelFood = 24;      //음식 조회
 
-	// 2-2. 여행패키지 상세 조회
-	int searchTravelPackageAll = 210;  		//여행패키지 전체 조회
-	int searchTravelPackageByID = 211;  	//여행패키지 ID(번호) 조회
-	int searchTravelPackageByName = 212;  	//여행패키지 이름 조회
-	int searchTravelPackageByPrice = 213;  	//여행패키지 가격 조회
-	int searchTravelPackageByDate = 214;  	//여행패키지 날짜 조회
-
-
-
 	// 3. 여행패키지 수정
 	int updateTravelPackage = 31;   //여행패키지 수정
 	int updateTravelPlace = 32;   	//여행지 수정
@@ -51,8 +42,6 @@ public interface GlobalParams {
 	int searchTravelHistory = 71;   //여행패키지 기록 조회
 	int deleteTravelHistory = 72;  	//여행패키지기록 삭제
 
-	int avoidNo = -1; 				//함수 제어용 변수
-	
 	//terminate Program(프로그램 종료)
 	int terminateNum = 99999;
 }

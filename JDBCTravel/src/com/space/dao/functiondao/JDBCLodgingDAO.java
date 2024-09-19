@@ -31,8 +31,6 @@ public class JDBCLodgingDAO implements LodgingDAO {
 	public void updateLodgingByNO(int lodgingNumber) {
 		Lodging lodging = new Lodging();
     	
-    	System.out.println("enter the lodging number");
-    	int inputNum = AppFuncs.inputInteger();
     	
     	System.out.println("Enter new Lodging Name");
     	String inputWord = AppFuncs.inputString();
@@ -41,7 +39,7 @@ public class JDBCLodgingDAO implements LodgingDAO {
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE LODGINGS SET LODGING_NAME = ? WHERE LODGING_NO = ?")){ 
     			
 			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
+			pStatement.setInt(2, lodgingNumber);
 			
 			pStatement.executeUpdate(); 
 		
