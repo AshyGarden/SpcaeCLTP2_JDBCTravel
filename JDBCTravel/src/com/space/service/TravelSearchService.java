@@ -1,6 +1,11 @@
 package com.space.service;
 
-import com.space.global.*;
+import com.space.dao.functiondao.JDBCCustomerDAO;
+import com.space.dao.functiondao.JDBCFoodDAO;
+import com.space.global.AppFuncs;
+import com.space.global.AppUI;
+import com.space.global.GlobalParams;
+import com.space.global.Start;
 
 public class TravelSearchService implements Start {
 
@@ -55,5 +60,21 @@ public class TravelSearchService implements Start {
     private void SearchReservation() {
 
     }
+    
+    private void SearchFoodByNo() {
+    	JDBCFoodDAO jdbcFoodDao = new JDBCFoodDAO();
+    	System.out.println("enter the food number to see");
+    	int foodNumber = AppFuncs.inputInteger();
+    	jdbcFoodDao.findFoodById(foodNumber);
+    	
+    }
+    
+    private void SearchCustomerByNo() {
+    	JDBCCustomerDAO jdbcCustomerDao = new JDBCCustomerDAO();
+    	System.out.println("enter the customer number to see");
+    	int customerNumber = AppFuncs.inputInteger();
+    	jdbcCustomerDao.findCustomerById(customerNumber);
+    }
+    
 
 }
