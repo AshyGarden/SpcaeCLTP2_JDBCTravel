@@ -3,16 +3,15 @@ package com.space.dao.functiondao;
 import com.space.dao.interfacedao.PlaceDAO;
 import com.space.global.DataSource;
 import com.space.travel.Food;
+import com.space.travel.Lodging;
 import com.space.travel.Place;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.time.LocalDate;
 
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
+import com.space.travel.TravelPackage;
 
 
 public class JDBCPlaceDAO implements PlaceDAO {
@@ -93,5 +92,74 @@ public class JDBCPlaceDAO implements PlaceDAO {
 				e.printStackTrace();
 			}
 	}
-	
+
+	@Override
+	public Place searchByName() {
+		System.out.println("Please Type place name");
+		String placeName = AppFuncs.inputString();
+
+		Place place = null;
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM place WHERE place_name= ?")){
+
+			preparedStatement.setString(1,placeName);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+
+				place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				place.setPlaceName(resultSet.getString("place_name"));
+				place.setPlaceArrival(resultSet.getDate("place_arrival"));
+				place.setPlaceDeparture(resultSet.getDate("place_departure"));
+
+				TravelPackage travel = new TravelPackage();
+				travel.setPackageNumber(resultSet.getInt("travel_no"));
+				place.setTravelPackage(travel);
+			} else {
+				System.out.println("There isn't such place");
+			}
+
+
+
+		} catch(SQLException e){
+			System.err.println("There isn't such place");
+		}
+		return place;
+	}
+
+	@Override
+	public Place searchByNo() {
+		System.out.println("Please Type place number");
+		int placeNumber = AppFuncs.inputInteger();
+
+		Place place = null;
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM place WHERE place_no= ?")){
+
+			preparedStatement.setInt(1,placeNumber);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+
+				place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				place.setPlaceName(resultSet.getString("place_name"));
+				place.setPlaceArrival(resultSet.getDate("place_arrival"));
+				place.setPlaceDeparture(resultSet.getDate("place_departure"));
+
+				TravelPackage travel = new TravelPackage();
+				travel.setPackageNumber(resultSet.getInt("travel_no"));
+				place.setTravelPackage(travel);
+			} else {
+				System.out.println("There isn't such place");
+			}
+
+
+
+		} catch(SQLException e){
+			System.err.println("There isn't such place");
+		}
+		return place;
+	}
 }

@@ -13,6 +13,8 @@ import com.space.travel.Place;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 
+import javax.xml.crypto.Data;
+
 public class JDBCFoodDAO implements FoodDAO {
 
 	@Override
@@ -83,6 +85,68 @@ public class JDBCFoodDAO implements FoodDAO {
 	}
 
 	@Override
+	public Food searchByNo() {
+		System.out.println("Please Type food number");
+		int foodNumber = AppFuncs.inputInteger();
+
+		Food food = null;
+		try(Connection connection = DataSource.getDataSource();
+		PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM FOODS WHERE FOOD_NO = ?")){
+
+			preparedStatement.setInt(1,foodNumber);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+				food = new Food();
+				food.setFoodNumber(resultSet.getInt("food_no"));
+				food.setFoodName(resultSet.getString("food_name"));
+
+				Place place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				food.setPlace(place);
+			} else {
+				System.out.println("There isn't such food");
+			}
+
+
+
+		} catch(SQLException e){
+			System.err.println("There isn't such food");
+		}
+		return food;
+	}
+
+
+	@Override
+	public Food searchByName() {
+		System.out.println("Please Type food Name");
+		String name = AppFuncs.inputString();
+
+		Food food = null;
+		try(Connection connection = DataSource.getDataSource();
+			PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM FOODS WHERE FOOD_NAME = ?")){
+
+			preparedStatement.setString(1, name);
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			if(resultSet.next()){
+				food = new Food();
+				food.setFoodNumber(resultSet.getInt("food_no"));
+				food.setFoodName(resultSet.getString("food_name"));
+
+				Place place = new Place();
+				place.setPlaceNumber(resultSet.getInt("place_no"));
+				food.setPlace(place);
+			} else{
+				System.out.println("There isn't such food");
+			}
+
+
+		} catch(SQLException e){
+			System.err.println("There isn't such food");
+		}
+    
+	@Override
 	public Food findFoodById(int foodNumber) {
 		Food food = new Food();
 		Place place = new Place();
@@ -100,17 +164,12 @@ public class JDBCFoodDAO implements FoodDAO {
 				
 				place.setPlaceNumber(rs.getInt("place_no"));
 				food.setPlace(place);
-				
-				
-			
-			}
-				 
+			} 
 				
 		} catch (SQLException e) {
 			
 			e.printStackTrace();
 		}
-		
 		return food;
 	}
 }
