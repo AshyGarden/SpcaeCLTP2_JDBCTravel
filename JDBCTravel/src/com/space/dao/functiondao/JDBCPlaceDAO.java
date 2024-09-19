@@ -37,9 +37,6 @@ public class JDBCPlaceDAO implements PlaceDAO {
 	public void updatePlaceByNO(int placeNumber) {
 		Place place = new Place();
     	
-    	System.out.println("enter the place number");
-    	int inputNum = AppFuncs.inputInteger();
-    	
     	System.out.println("Enter new Place Name");
     	String inputWord = AppFuncs.inputString();
     	
@@ -47,7 +44,7 @@ public class JDBCPlaceDAO implements PlaceDAO {
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE PLACES SET PLACE_NAME = ? WHERE PLACE_NO = ?")){ 
     		
 			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
+			pStatement.setInt(2, placeNumber);
 			
 			
 			pStatement.executeUpdate(); 
