@@ -58,10 +58,10 @@ public class AppUI {
 	public static void TravelSearchPackageScreen() {
 		System.out.println("\n========== 여행패키지 상세 조회 ==========");
 		System.out.println("### 210. 전체 조회");
-		System.out.println("### 211. 전체 조회");
-		System.out.println("### 212. 전체 조회");
-		System.out.println("### 213. 전체 조회");
-		System.out.println("### 214. 조건 조회");
+		System.out.println("### 211. ID로 여행패키지 조회");
+		System.out.println("### 212. 이름으로 여행패키지 조회");
+		System.out.println("### 213. 가격으로 여행패키지 조회");
+		System.out.println("### 214. 날짜로 여행패키지 조회");
 		System.out.println("### 9. 이전 페이지로 돌아가기");
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
