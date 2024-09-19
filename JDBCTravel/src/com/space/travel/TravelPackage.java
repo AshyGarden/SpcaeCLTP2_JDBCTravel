@@ -63,12 +63,11 @@ public class TravelPackage {
 
     @Override
     public String toString() {
-        return "TravelPackage{" +
-                "packageNumber=" + packageNumber +
-                ", packageName='" + packageName + '\'' +
-                ", packagePrice=" + packagePrice +
-                ", packageDeparture=" + packageDeparture +
-                ", packageArrival=" + packageArrival +
-                '}';
+        return "[여행패키지 번호: " + packageNumber +
+                " / 여행패키지 이름: " + packageName +
+                " / 여행패키지 가격: " + packagePrice +
+                " / 여행패키지 출발일:" + packageDeparture +
+                " / 여행패키지 도착일:" + packageArrival +
+                "]";
     }
 }

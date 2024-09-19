@@ -68,7 +68,7 @@ public class JDBCCustomerDAO implements CustomerDAO {
 		Customer customer = new Customer();
 		
 		try (Connection connection = DataSource.getDataSource();
-				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_NO = ?"))
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM CUSTOMERS WHERE CUSTOMER_NO = ?"))
 				{ 
 			
 			pStatement.setInt(1, customerNumber);		
