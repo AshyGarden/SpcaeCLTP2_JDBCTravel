@@ -1,13 +1,15 @@
 package com.space.dao.functiondao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import com.space.customer.Customer;
 import com.space.dao.interfacedao.CustomerDAO;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 import com.space.global.DataSource;
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 
 public class JDBCCustomerDAO implements CustomerDAO {
     @Override
@@ -59,4 +61,34 @@ public class JDBCCustomerDAO implements CustomerDAO {
         }
 
     }
+
+
+	@Override
+	public Customer findCustomerById(int customerNumber) {
+		Customer customer = new Customer();
+		
+		try (Connection connection = DataSource.getDataSource();
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM CUSTOMER WHERE CUSTOMER_NO = ?"))
+				{ 
+			
+			pStatement.setInt(1, customerNumber);		
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.next()) {
+				
+				customer.setCustomerNo(rs.getInt("customer_no")); 
+				customer.setCustomerName(rs.getString("customer_name"));
+				customer.setCustomerPhoneNo(rs.getString("customer_phoneNo"));
+				customer.setCustomerEmail(rs.getNString("customer_email"));
+				
+			
+			}
+				 
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return customer;
+	}
 }

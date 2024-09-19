@@ -2,8 +2,10 @@ package com.space.dao.functiondao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.space.customer.Customer;
 import com.space.dao.interfacedao.FoodDAO;
 import com.space.global.DataSource;
 import com.space.travel.Food;
@@ -81,5 +83,37 @@ public class JDBCFoodDAO implements FoodDAO {
 				e.printStackTrace();
 			}
 		
+	}
+
+	@Override
+	public Food findFoodById(int foodNumber) {
+		Food food = new Food();
+		Place place = new Place();
+		
+		try (Connection connection = DataSource.getDataSource();
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM FOOD WHERE FOOD_NO = ?"))
+				{ 
+			
+			pStatement.setInt(1, foodNumber);		
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.next()) {
+				
+				food.setFoodNumber(rs.getInt("customer_no")); 
+				food.setFoodName(rs.getString("customer_name"));
+				
+				place.setPlaceNumber(rs.getInt("place_no"));
+				food.setPlace(place);
+				
+				
+			
+			}
+				 
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		return food;
 	}
 }
