@@ -63,11 +63,12 @@ public class Place {
 
     @Override
     public String toString() {
-        return "[여행지 번호: " + placeNumber +
-                " / 여행지명: " + placeName +
-                " / 여행지도착일: " + placeArrival +
-                " / 여행지출발일: " + placeDeparture +
-                "  / 여행패키지번호: " + travelPackage +
-                "]";
+        return "Place{" +
+                "placeNumber=" + placeNumber +
+                ", placeName='" + placeName + '\'' +
+                ", placeArrival=" + placeArrival +
+                ", placeDeparture=" + placeDeparture +
+                ", travelPackage=" + travelPackage +
+                '}';
     }
 }

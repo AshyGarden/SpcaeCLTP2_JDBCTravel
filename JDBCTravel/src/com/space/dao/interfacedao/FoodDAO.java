@@ -6,6 +6,9 @@ public interface FoodDAO {
 	void updateFoodByNO(int foodNumber);
 	void deleteByFoodNO(int foodNumber);
 	void insertFood( );
+
 	Food searchByNo();
 	Food searchByName();
+  Food findFoodById(int foodNumber);
+
 }

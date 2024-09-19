@@ -39,8 +39,8 @@ public class JDBCTravelDAO implements TravelDAO{
             preparedStatement.setInt(1, inputTravelNO);
             preparedStatement.setString(2, inputTravelName);
             preparedStatement.setInt(3, inputTravelPrice);
-            preparedStatement.setDate(3, inputTravleDeparture);
-            preparedStatement.setDate(3, inputTravleArrival);
+            preparedStatement.setDate(4, inputTravleDeparture);
+            preparedStatement.setDate(5, inputTravleArrival);
 
             preparedStatement.executeUpdate();
 
@@ -316,27 +316,27 @@ public class JDBCTravelDAO implements TravelDAO{
 
             inputStartDate = inputYear1+"/"+inputMonth1+"/"+inputDay1;
 
-            System.out.println("범위조건 최소부분을 입력받겠습니다.");
+            System.out.println("범위조건 최대부분을 입력받겠습니다.");
             System.out.println("연도를 입력해주세요.");
             System.out.print(">>>");
-            int inputYear = AppFuncs.inputInteger();
+            int inputYear2 = AppFuncs.inputInteger();
 
             System.out.println("월을 입력해주세요.");
             System.out.print(">>>");
-            int inputMonth = AppFuncs.inputInteger();
+            int inputMonth2 = AppFuncs.inputInteger();
 
             System.out.println("일을 입력해주세요");
             System.out.print(">>>");
-            int inputDay = AppFuncs.inputInteger();
+            int inputDay2 = AppFuncs.inputInteger();
 
-            inputStartDate = inputYear+"/"+inputMonth+"/"+inputDay;
-
+            inputEndDate = inputYear2+"/"+inputMonth2+"/"+inputDay2;
+            option1 = " TRAVEL_DEPARTURE >= ? ";
             option2 = " AND ";
+            option3 = " TRAVEL_ARRIVAL <= ? ";
         } else{
             System.out.println("가격조회 조건을 잘못 입력하여 이전메뉴로 돌아갑니다.");
             return;
         }
-
 
         String sortOrder = AppFuncs.SortingLogic();
 
@@ -346,14 +346,14 @@ public class JDBCTravelDAO implements TravelDAO{
                              "WHERE "+ option1 + " " + option2 + " " + option3
                         )) {
 
-//            if(querySelector == 1){
-//                pStat.setInt(1, inputPriceMin);
-//            } else if(querySelector == 2){
-//                pStat.setInt(1, inputPriceMax);
-//            } else if(querySelector == 3){
-//                pStat.setInt(1, inputPriceMin);
-//                pStat.setInt(2, inputPriceMax);
-//            }
+            if(querySelector == 1){
+                pStat.setString(1, inputStartDate);
+            } else if(querySelector == 2){
+                pStat.setString(1, inputEndDate);
+            } else {
+                pStat.setString(1, inputStartDate);
+                pStat.setString(2, inputEndDate);
+            }
 
             ResultSet rs = pStat.executeQuery();
 

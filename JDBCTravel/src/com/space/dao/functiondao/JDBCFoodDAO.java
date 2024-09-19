@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.space.customer.Customer;
 import com.space.dao.interfacedao.FoodDAO;
 import com.space.global.DataSource;
 import com.space.travel.Food;
@@ -19,10 +20,7 @@ public class JDBCFoodDAO implements FoodDAO {
 	@Override
 	public void updateFoodByNO(int foodNumber) {
 		Food food = new Food();
-	    
-    	System.out.println("enter the food number");
-    	int inputNum = AppFuncs.inputInteger();
-    	
+	   
     	System.out.println("Enter new food Name");
     	String inputWord = AppFuncs.inputString();
     	
@@ -30,7 +28,7 @@ public class JDBCFoodDAO implements FoodDAO {
     			PreparedStatement pStatement = connection.prepareStatement("UPDATE FOODS SET FOOD_NAME = ? WHERE FOOD_NO = ?")){ 
     			
 			pStatement.setString(1, inputWord);
-			pStatement.setInt(2, inputNum);
+			pStatement.setInt(2, foodNumber);
 			
 			pStatement.executeUpdate();
 		
@@ -85,7 +83,6 @@ public class JDBCFoodDAO implements FoodDAO {
 			}
 		
 	}
-
 
 	@Override
 	public Food searchByNo() {
@@ -147,6 +144,31 @@ public class JDBCFoodDAO implements FoodDAO {
 
 		} catch(SQLException e){
 			System.err.println("There isn't such food");
+		}
+    
+	@Override
+	public Food findFoodById(int foodNumber) {
+		Food food = new Food();
+		Place place = new Place();
+		
+		try (Connection connection = DataSource.getDataSource();
+				PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM FOODS WHERE FOOD_NO = ?"))
+				{ 
+			
+			pStatement.setInt(1, foodNumber);		
+			ResultSet rs = pStatement.executeQuery();
+			if(rs.next()) {
+				
+				food.setFoodNumber(rs.getInt("food_no")); 
+				food.setFoodName(rs.getString("food_name"));
+				
+				place.setPlaceNumber(rs.getInt("place_no"));
+				food.setPlace(place);
+			} 
+				
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
 		}
 		return food;
 	}
