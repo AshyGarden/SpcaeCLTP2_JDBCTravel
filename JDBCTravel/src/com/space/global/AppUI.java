@@ -23,7 +23,7 @@ public class AppUI {
 		System.out.println("### 2. 여행패키지 조회");
 		System.out.println("### 3. 여행패키지 수정");
 		System.out.println("### 4. 여행패키지 삭제");
-		System.out.println("### 7. 여행패키지 기록");
+//		System.out.println("### 7. 여행패키지 기록");
 		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
@@ -45,23 +45,68 @@ public class AppUI {
 	// 2. 여행패키지 조회
 	public static void TravelSearchScreen() {
 		System.out.println("\n========== 여행패키지 조회 ==========");
-		System.out.println("### 20. 예약 조회");
-		System.out.println("### 21. 여행패키지 조회");
-		System.out.println("### 22. 여행지 조회");
-		System.out.println("### 23. 숙박시설 조회");
-		System.out.println("### 24. 음식 조회");
+		System.out.println("### 21. 예약 조회");
+		System.out.println("### 22. 여행패키지 조회");
+		System.out.println("### 23. 여행지 조회");
+		System.out.println("### 24. 숙박시설 조회");
+		System.out.println("### 25. 음식 조회");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
 		System.out.println("--------------------------------------");
 		System.out.print(">>>"); 
 	}
 
+	// 2-1. 예약 조회
+	public static void TravelSearchRsvScreen() {
+		System.out.println("\n========== 예약 상세 조회 ==========");
+		System.out.println("### 211. 전체 예약 조회");
+		System.out.println("### 212. ID로 예약 조회");
+		System.out.println("### 213. 이름으로 예약 조회");
+		System.out.println("### 9. 이전 페이지로 돌아가기");
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+
+	// 2-2. 여행 패키지 조회
 	public static void TravelSearchPackageScreen() {
 		System.out.println("\n========== 여행패키지 상세 조회 ==========");
-		System.out.println("### 210. 전체 조회");
-		System.out.println("### 211. ID로 여행패키지 조회");
-		System.out.println("### 212. 이름으로 여행패키지 조회");
-		System.out.println("### 213. 가격으로 여행패키지 조회");
-		System.out.println("### 214. 날짜로 여행패키지 조회");
+		System.out.println("### 221. 전체 여행패키지 조회");
+		System.out.println("### 222. ID로 여행패키지 조회");
+		System.out.println("### 223. 이름으로 여행패키지 조회");
+		System.out.println("### 224. 가격으로 여행패키지 조회");
+		System.out.println("### 225. 날짜로 여행패키지 조회");
+		System.out.println("### 9. 이전 페이지로 돌아가기");
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+
+	// 2-3. 여행지 조회
+	public static void TravelSearchPlaceScreen() {
+		System.out.println("\n========== 여행지 상세 조회 ==========");
+		System.out.println("### 231. 전체 여행지 조회");
+		System.out.println("### 232. ID로 여행지 조회");
+		System.out.println("### 233. 이름으로 여행지 조회");
+		System.out.println("### 9. 이전 페이지로 돌아가기");
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+
+	// 2-4. 숙박시설 조회
+	public static void TravelSearchLodgingScreen() {
+		System.out.println("\n========== 숙박시설 상세 조회 ==========");
+		System.out.println("### 241. 전체 숙박시설 조회");
+		System.out.println("### 242. ID로 숙박시설 조회");
+		System.out.println("### 243. 이름으로 숙박시설 조회");
+		System.out.println("### 9. 이전 페이지로 돌아가기");
+		System.out.println("--------------------------------------");
+		System.out.print(">>>");
+	}
+
+	// 2-5. 음식 조회
+	public static void TravelSearchFoodScreen() {
+		System.out.println("\n========== 음식 상세 조회 ==========");
+		System.out.println("### 251. 전체 음식 조회");
+		System.out.println("### 252. ID로 음식 조회");
+		System.out.println("### 253. 이름으로 음식 조회");
 		System.out.println("### 9. 이전 페이지로 돌아가기");
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
@@ -95,7 +140,7 @@ public class AppUI {
 		System.out.print(">>>");
 	}
 	
-	// 7. 여행패키지 기록
+	// 7. 여행패키지 기록(구현예정)
 	public static void TravelHistoryScreen() {
 		System.out.println("\n========= 여행패키지 기록 =========");
 		System.out.println("### 71. 여행패키지기록 조회");
@@ -114,7 +159,6 @@ public class AppUI {
 	public static void DeleteCompleteMessage(){
 		System.out.println("삭제를 완료했습니다.");
 	}
-
 
 	// 10. Insert 요청 구문
 	public static void TypeSelection(String tableName){

@@ -4,29 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.space.customer.Customer;
 import com.space.dao.interfacedao.CustomerDAO;
 import com.space.global.AppFuncs;
 import com.space.global.AppUI;
 import com.space.global.DataSource;
+import com.space.travel.Lodging;
+import com.space.travel.Place;
 
 public class JDBCCustomerDAO implements CustomerDAO {
-    @Override
-    public void deleteByCustomerNO(int customerNumber) {
-
-        try (Connection connection = DataSource.getDataSource();
-            PreparedStatement preparedStatement = connection.prepareStatement("Delete customers WHERE customer_no = ?"))
-        {
-            preparedStatement.setInt(1, customerNumber);
-            preparedStatement.executeUpdate();
-            AppUI.DeleteCompleteMessage();
-        }
-        catch (SQLException e) {
-        e.printStackTrace();
-        }
-    }
-
 
     @Override
     public void insertCustomer() {
@@ -62,8 +51,33 @@ public class JDBCCustomerDAO implements CustomerDAO {
 
     }
 
+    @Override
+    public List<Customer> findAllCustomers() {
+        List<Customer> customers = new ArrayList<Customer>();
+        String sortOrder = AppFuncs.SortingLogic();
 
-	@Override
+        try (Connection conn = DataSource.getDataSource();
+             PreparedStatement pStat = conn.prepareStatement("SELECT * FROM CUSTOMERS "
+                     + "ORDER BY CUSTOMER_NO " + sortOrder);
+             ResultSet rs = pStat.executeQuery()) {
+
+            while(rs.next()) {
+                Customer customer = new Customer();
+                customer.setCustomerNo(rs.getInt("CUSTOMER_NO"));
+                customer.setCustomerName(rs.getString("CUSTOMER_NAME"));
+                customer.setCustomerPhoneNo(rs.getString("CUSTOMER_PHONENO"));
+                customer.setCustomerEmail(rs.getString("CUSTOMER_EMAIL"));
+                customers.add(customer);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return customers;
+    }
+
+    @Override
 	public Customer findCustomerById(int customerNumber) {
 		Customer customer = new Customer();
 		
@@ -91,4 +105,41 @@ public class JDBCCustomerDAO implements CustomerDAO {
 		
 		return customer;
 	}
+
+    @Override
+    public Customer findCustomerByName(String customerName) {
+        Customer customer = new Customer();
+
+        try (Connection connection = DataSource.getDataSource();
+             PreparedStatement pStatement = connection.prepareStatement("SELECT * FROM CUSTOMERS " +
+                     "WHERE CUSTOMER_NAME = ?")){
+
+            pStatement.setString(1, customerName);
+            ResultSet rs = pStatement.executeQuery();
+            if(rs.next()) {
+                customer.setCustomerNo(rs.getInt("customer_no"));
+                customer.setCustomerName(rs.getString("customer_name"));
+                customer.setCustomerPhoneNo(rs.getString("customer_phoneNo"));
+                customer.setCustomerEmail(rs.getNString("customer_email"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return customer;
+    }
+
+    @Override
+    public void deleteByCustomerNO(int customerNumber) {
+
+        try (Connection connection = DataSource.getDataSource();
+             PreparedStatement preparedStatement = connection.prepareStatement("Delete customers WHERE customer_no = ?"))
+        {
+            preparedStatement.setInt(1, customerNumber);
+            preparedStatement.executeUpdate();
+            AppUI.DeleteCompleteMessage();
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -48,8 +48,18 @@ public class AppFuncs {
 		return sqlDate;
     }
 
-	
-	
+	public static String SortingLogic(){
+		while(true){
+			System.out.println("정렬 규칙을 정합니다.");
+			System.out.println("[1. 오름차순/ 2. 내림차순]");
+			System.out.print(">>>");
+			int sortNumber = AppFuncs.inputInteger();
+			if (sortNumber == 1) { return "ASC"; }
+			else if(sortNumber == 2){ return "DESC"; }
+			else { System.out.println("해당번호 누르지 않았습니다. 다시 입력해주십시오.");	}
+		}
+	}
+
 	//시간 간격 함수
 	public static String BlockTime(LocalDateTime depart,LocalDateTime arrive) {	
 		Duration duration = Duration.between(depart, arrive);

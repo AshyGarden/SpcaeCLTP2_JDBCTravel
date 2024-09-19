@@ -75,11 +75,6 @@ public class JDBCTravelDAO implements TravelDAO{
                 travels.add(travel);
             }
 
-            System.out.println("--- 여행 패키지 전체 조회 결과는 다음과 같습니다---");
-            for(TravelPackage t: travels) {
-                System.out.println(t);
-            }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -146,11 +141,6 @@ public class JDBCTravelDAO implements TravelDAO{
                 travel.setPackageArrival(rs.getDate("TRAVEL_ARRIVAL"));
 
                 travels.add(travel);
-            }
-
-            System.out.println("--- 여행 패키지 이름 조회 결과는 다음과 같습니다---");
-            for(TravelPackage t: travels) {
-                System.out.println(t);
             }
 
         } catch (SQLException e) {

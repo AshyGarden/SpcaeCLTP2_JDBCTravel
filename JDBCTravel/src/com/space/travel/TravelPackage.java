@@ -10,8 +10,7 @@ public class TravelPackage {
     private Date packageArrival;
 
 
-    public TravelPackage() {
-    }
+    public TravelPackage() {}
 
     public TravelPackage(int packageNumber, String packageName, int packagePrice, Date packageDeparture, Date packageArrival) {
         this.packageNumber = packageNumber;

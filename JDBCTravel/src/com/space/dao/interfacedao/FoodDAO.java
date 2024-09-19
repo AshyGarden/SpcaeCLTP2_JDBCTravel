@@ -2,13 +2,22 @@ package com.space.dao.interfacedao;
 
 import com.space.travel.Food;
 
+import java.util.List;
+
 public interface FoodDAO {
-	void updateFoodByNO(int foodNumber);
-	void deleteByFoodNO(int foodNumber);
+
+	//Insert
 	void insertFood( );
 
-	Food searchByNo();
-	Food searchByName();
-  Food findFoodById(int foodNumber);
+	//Search(Select)
+	List<Food> findAllFoods();
+	Food findFoodByNo();
+	Food findFoodByName();
+//	Food findFoodById(int foodNumber);
 
+	//Update
+	void updateFoodByNO(int foodNumber);
+
+	//Delete
+	void deleteByFoodNO(int foodNumber);
 }

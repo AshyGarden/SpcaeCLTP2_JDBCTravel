@@ -50,11 +50,10 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
-                "customerNo=" + customerNo +
-                ", customerName='" + customerName + '\'' +
-                ", customerPhoneNo='" + customerPhoneNo + '\'' +
-                ", customerEmail='" + customerEmail + '\'' +
-                '}';
+        return "[고객번호: " + customerNo +
+                " / 고객이름: " + customerName +
+                " / 고객번호: " + customerPhoneNo +
+                " / 고객이메일: " + customerEmail +
+                "]";
     }
 }

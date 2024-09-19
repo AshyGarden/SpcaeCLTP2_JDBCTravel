@@ -3,6 +3,9 @@ package com.space.service.search;
 import com.space.dao.functiondao.JDBCTravelDAO;
 import com.space.dao.interfacedao.TravelDAO;
 import com.space.global.*;
+import com.space.travel.TravelPackage;
+
+import java.util.List;
 
 public class TravelSearchPackageService implements Start {
 
@@ -40,7 +43,11 @@ public class TravelSearchPackageService implements Start {
 
     private void TravelPackageSearchAll() {
         TravelDAO travelDAO = new JDBCTravelDAO();
-        travelDAO.findAllTravels();
+        List<TravelPackage> travels = travelDAO.findAllTravels();
+        System.out.println("--- 여행 패키지 전체 조회 결과는 다음과 같습니다---");
+        for(TravelPackage t: travels) {
+            System.out.println(t.toString());
+        }
     }
 
     private void TravelPackageSearchByID() {
@@ -51,7 +58,11 @@ public class TravelSearchPackageService implements Start {
 
     private void TravelPackageSearchByName() {
         TravelDAO travelDAO = new JDBCTravelDAO();
-        travelDAO.findTravelsByName();
+        List<TravelPackage> travels = travelDAO.findTravelsByName();
+        System.out.println("--- 여행 패키지 이름 조회 결과는 다음과 같습니다---");
+        for(TravelPackage t: travels) {
+            System.out.println(t);
+        }
     }
 
     private void TravelPackageSearchByPrice() {
@@ -63,6 +74,5 @@ public class TravelSearchPackageService implements Start {
         TravelDAO travelDAO = new JDBCTravelDAO();
         travelDAO.findTravelsByDate();
     }
-
 
 }

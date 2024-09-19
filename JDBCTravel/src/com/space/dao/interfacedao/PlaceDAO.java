@@ -2,12 +2,22 @@ package com.space.dao.interfacedao;
 
 import com.space.travel.Place;
 
+import java.util.List;
+
 public interface PlaceDAO {
-    void deletePlaceByNO(int placeNumber);
-    void updatePlaceByNO(int placeNumber);
+
+    //Insert
     void insertPlace();
-    Place searchByNo();
-    Place searchByName();
-    
+
+    //Search(Select)
+    List<Place> findAllPlaces();
+    Place findPlaceByNo();
+    Place findPlaceByName();
+
+    //Update
+    void updatePlaceByNO(int placeNumber);
+
+    //Delete
+    void deletePlaceByNO(int placeNumber);
 
 }
