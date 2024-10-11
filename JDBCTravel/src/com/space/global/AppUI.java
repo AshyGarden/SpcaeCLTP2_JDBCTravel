@@ -37,7 +37,6 @@ public class AppUI {
 		System.out.println("### 13. 숙박시설 추가");
 		System.out.println("### 14. 음식 추가");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>"); 
 	}
@@ -120,7 +119,6 @@ public class AppUI {
 		System.out.println("### 33. 숙박시설 수정");
 		System.out.println("### 34. 음식 수정");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
 	}
@@ -135,7 +133,6 @@ public class AppUI {
 		System.out.println("### 44. 음식 삭제");
 		System.out.println("### 45. 고객 정보 삭제");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
 		System.out.println("--------------------------------------");
 		System.out.print(">>>");
 	}
@@ -146,7 +143,6 @@ public class AppUI {
 		System.out.println("### 71. 여행패키지기록 조회");
 		System.out.println("### 72. 여행패키지기록 삭제");
 		System.out.println("### 9. 메인 페이지로 돌아가기");
-		TerminateProgramMessages();
 		System.out.println("----------------------------------------");
 		System.out.print(">>> ");
 	}
